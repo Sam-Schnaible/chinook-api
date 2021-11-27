@@ -20,5 +20,6 @@ module.exports = {
       WHERE id=${id}
     `, [first_name, last_name, company, address, city, state, country, postal_code, phone, fax, email, support_rep_id]);
     return "Customer successfully updated!";
-  }
+  },
+
 }
