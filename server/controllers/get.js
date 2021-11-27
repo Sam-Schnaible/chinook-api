@@ -4,7 +4,7 @@ module.exports = {
   getOne: async (req, res) => {
     try {
       let data = await get.getOne(req.params.id);
-      res.status(200).json(data);
+      res.status(200).send(data);
     } catch(err) {
       console.log(err);
       res.status(400).send(err);
