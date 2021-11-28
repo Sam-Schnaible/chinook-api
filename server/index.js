@@ -6,10 +6,11 @@ const morgan = require('morgan');
 const router = require('./routes.js');
 
 app.use(express.json());
+app.use(compression());
+app.use(morgan('tiny'));
 
 app.use('/', router);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
-/* ADD NODEMON SO SERVER WILL RESTART AUTOMATICALLY AFTER CHANGES */
