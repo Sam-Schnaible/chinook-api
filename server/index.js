@@ -7,7 +7,7 @@ const router = require('./routes.js');
 
 app.use(express.json());
 app.use(compression());
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 
 app.use('/', router);
 
