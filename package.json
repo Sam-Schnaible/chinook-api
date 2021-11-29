@@ -4,7 +4,8 @@
   "description": "A simple CRUD API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode development",
     "database": "sudo -u postgres psql < database/schema.sql"
   },
   "repository": {
@@ -22,6 +23,21 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "pg-promise": "^10.11.1"
+    "pg-promise": "^10.11.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   }
 }
