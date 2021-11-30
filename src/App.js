@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import Retrieve from './components/Retrieve.jsx';
+import Create from './components/Create.jsx';
 
 const App = () => {
 
@@ -8,6 +9,7 @@ const App = () => {
 
       <h1> Hello, World! </h1>
       <Retrieve />
+      <Create />
     </div>
   );
 }
