@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import Retrieve from './components/Retrieve.jsx';
 
 const App = () => {
 
@@ -6,6 +7,7 @@ const App = () => {
     <div className="App">
 
       <h1> Hello, World! </h1>
+      <Retrieve />
     </div>
   );
 }
