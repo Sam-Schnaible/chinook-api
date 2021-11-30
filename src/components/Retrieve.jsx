@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
+import Update from './Update.jsx';
+
+export const retrieveContext = React.createContext();
 
 const Retrieve = () => {
 
@@ -37,6 +40,7 @@ const Retrieve = () => {
 
   return (
     <>
+      <h1>Retrieve Customer</h1>
       <form className='form-style' onSubmit={(e) => handleOnSubmit(e)}>
         <label>
           Enter Customer ID:
@@ -45,19 +49,21 @@ const Retrieve = () => {
         </label>
         <input type='submit' value='Get Customer'/>
       </form>
-    <h2>Customer Information</h2>
-    <p>{customer.first_name}</p>
-    <p>{customer.last_name}</p>
-    <p>{customer.company}</p>
-    <p>{customer.address}</p>
-    <p>{customer.city}</p>
-    <p>{customer.state}</p>
-    <p>{customer.country}</p>
-    <p>{customer.postal_code}</p>
-    <p>{customer.phone}</p>
-    <p>{customer.fax}</p>
-    <p>{customer.email}</p>
-    <p>{customer.support_rep_id}</p>
+      <p>{customer.first_name}</p>
+      <p>{customer.last_name}</p>
+      <p>{customer.company}</p>
+      <p>{customer.address}</p>
+      <p>{customer.city}</p>
+      <p>{customer.state}</p>
+      <p>{customer.country}</p>
+      <p>{customer.postal_code}</p>
+      <p>{customer.phone}</p>
+      <p>{customer.fax}</p>
+      <p>{customer.email}</p>
+      <p>{customer.support_rep_id}</p>
+      <retrieveContext.Provider value={customer}>
+        <Update />
+      </retrieveContext.Provider>
     </>
   )
 }
