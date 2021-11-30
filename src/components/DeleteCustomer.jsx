@@ -5,7 +5,6 @@ import 'regenerator-runtime/runtime';
 const DeleteCustomer = () => {
 
   const [customerID, setCustomerID] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -14,9 +13,7 @@ const DeleteCustomer = () => {
       url: `http://localhost:3000/customers/${customerID}`
     })
     .then( result => {
-      console.log(result);
       setCustomerID('');
-      setMessage(result.data);
     })
     .catch( err => {
       console.log(err.response);
@@ -25,8 +22,7 @@ const DeleteCustomer = () => {
 
   return (
     <>
-      <h1> Delete Customer</h1>
-      <p>{message}</p>
+      <h1>Delete Customer</h1>
       <form className='form-style' onSubmit={(e) => handleOnSubmit(e)}>
         <label>
           Enter Customer ID:
