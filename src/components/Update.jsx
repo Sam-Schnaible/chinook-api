@@ -56,7 +56,6 @@ const Update = () => {
       }
     })
     .then( result => {
-      console.log(result.data);
       setFirstName('');
       setLastName('');
       setCompany('');
