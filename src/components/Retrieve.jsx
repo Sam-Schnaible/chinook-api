@@ -8,18 +8,18 @@ export const retrieveContext = React.createContext();
 const Retrieve = () => {
 
   const [customer, setCustomer] = useState({
-   firstName: '',
-    lastName: '',
+   first_name: '',
+    last_name: '',
     company: '',
     address: '',
     city: '',
     state: '',
     country: '',
-    postalCode: '',
+    postal_code: '',
     phone: '',
     fax: '',
     email: '',
-    supportRepID: ''
+    support_rep_id: ''
   });
 
   const [customerID, setCustomerID] = useState('');
@@ -49,18 +49,18 @@ const Retrieve = () => {
         </label>
         <input type='submit' value='Get Customer'/>
       </form>
-      <p>{customer.firstName}</p>
-      <p>{customer.lastName}</p>
+      <p>{customer.first_name}</p>
+      <p>{customer.last_name}</p>
       <p>{customer.company}</p>
       <p>{customer.address}</p>
       <p>{customer.city}</p>
       <p>{customer.state}</p>
       <p>{customer.country}</p>
-      <p>{customer.postalCode}</p>
+      <p>{customer.postal_code}</p>
       <p>{customer.phone}</p>
       <p>{customer.fax}</p>
       <p>{customer.email}</p>
-      <p>{customer.supportRepID}</p>
+      <p>{customer.support_rep_id}</p>
       <retrieveContext.Provider value={customer}>
         <Update />
       </retrieveContext.Provider>
