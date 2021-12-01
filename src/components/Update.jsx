@@ -7,18 +7,18 @@ const Update = () => {
 
   let context= React.useContext(retrieveContext);
   const customerID = context.id;
-  const [firstName, setFirstName] = useState(context.firstName);
-  const [lastName, setLastName] = useState(context.lastName);
-  const [company, setCompany] = useState(context.city);
-  const [address, setAddress] = useState(context.address);
-  const [city, setCity] = useState(context.city);
-  const [state, setState] = useState(context.state);
-  const [country, setCountry] = useState(context.country);
-  const [postalCode, setPostalCode] = useState(context.PostalCode);
-  const [phone, setPhone] = useState(context.phone);
-  const [fax, setFax] = useState(context.fax);
-  const [email, setEmail] = useState(context.email);
-  const [supportRepID, setSupportRepID] = useState(context.supportRepID);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [company, setCompany] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [phone, setPhone] = useState('');
+  const [fax, setFax] = useState('');
+  const [email, setEmail] = useState('');
+  const [supportRepID, setSupportRepID] = useState('');
 
   const upDate = () => {
     setFirstName(context.first_name);
@@ -78,70 +78,76 @@ const Update = () => {
   return (
     <>
       <h1>Update Customer</h1>
-      <button onClick={()=> upDate() }>Add Current Information</button>
-      <form className='form-style' onSubmit={(e) => handleOnSubmit(e)}>
-        <label>
-          First Name:
-          <input type='text' required
-          value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-        </label>
-        <label>
-          Last Name:
-          <input type='text' required
-          value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-        </label>
-        <label>
-          Company:
-          <input type='text'
-          value={company} onChange={(e) => setCompany(e.target.value)}/>
-        </label>
-        <label>
-          Address:
-          <input type='text'
-          value={address} onChange={(e) => setAddress(e.target.value)}/>
-        </label>
-        <label>
-          City:
-          <input type='text'
-          value={city} onChange={(e) => setCity(e.target.value)}/>
-        </label>
-        <label>
-          State:
-          <input type='text'
-          value={state} onChange={(e) => setState(e.target.value)}/>
-        </label>
-        <label>
-          Country:
-          <input type='text'
-          value={country} onChange={(e) => setCountry(e.target.value)}/>
-        </label>
-        <label>
-          Postal Code:
-          <input type='text'
-          value={postalCode} onChange={(e) => setPostalCode(e.target.value)}/>
-        </label>
-        <label>
-          Phone:
-          <input type='text'
-          value={phone} onChange={(e) => setPhone(e.target.value)}/>
-        </label>
-        <label>
-          Fax:
-          <input type='text'
-          value={fax} onChange={(e) => setFax(e.target.value)}/>
-        </label>
-        <label>
-          Email:
-          <input type='email' required
-          value={email} onChange={(e) => setEmail(e.target.value)}/>
-        </label>
-        <label>
-          Support Rep ID:
-          <input type='text'
-          value={supportRepID} onChange={(e) => setSupportRepID(e.target.value)}/>
-        </label>
-        <input type='submit' value='Update Customer'/>
-      </form>
+      <button className='cursor' onClick={()=> upDate() }>Add Current Information</button>
+      <div className='container-a form-a'>
+        <form className='form-style container-form' onSubmit={(e) => handleOnSubmit(e)}>
+          <div className='container-c'>
+          <label>
+            First Name:
+            <input type='text' required
+            value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+          </label>
+          <label>
+            Last Name:
+            <input type='text' required
+            value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+          </label>
+          <label>
+            Company:
+            <input type='text'
+            value={company} onChange={(e) => setCompany(e.target.value)}/>
+          </label>
+          <label>
+            Address:
+            <input type='text'
+            value={address} onChange={(e) => setAddress(e.target.value)}/>
+          </label>
+          <label>
+            City:
+            <input type='text'
+            value={city} onChange={(e) => setCity(e.target.value)}/>
+          </label>
+          <label>
+            State:
+            <input type='text'
+            value={state} onChange={(e) => setState(e.target.value)}/>
+          </label>
+          </div>
+          <div className='container-c'>
+          <label>
+            Country:
+            <input type='text'
+            value={country} onChange={(e) => setCountry(e.target.value)}/>
+          </label>
+          <label>
+            Postal Code:
+            <input type='text'
+            value={postalCode} onChange={(e) => setPostalCode(e.target.value)}/>
+          </label>
+          <label>
+            Phone:
+            <input type='text'
+            value={phone} onChange={(e) => setPhone(e.target.value)}/>
+          </label>
+          <label>
+            Fax:
+            <input type='text'
+            value={fax} onChange={(e) => setFax(e.target.value)}/>
+          </label>
+          <label>
+            Email:
+            <input type='email' required
+            value={email} onChange={(e) => setEmail(e.target.value)}/>
+          </label>
+          <label>
+            Support Rep ID:
+            <input type='text'
+            value={supportRepID} onChange={(e) => setSupportRepID(e.target.value)}/>
+          </label>
+          </div>
+          <input className='submit-btn cursor' type='submit' value='Update Customer'/>
+        </form>
+      </div>
     </>
   )
 }

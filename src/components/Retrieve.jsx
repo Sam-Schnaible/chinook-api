@@ -7,20 +7,7 @@ export const retrieveContext = React.createContext();
 
 const Retrieve = () => {
 
-  const [customer, setCustomer] = useState({
-   first_name: '',
-    last_name: '',
-    company: '',
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    postal_code: '',
-    phone: '',
-    fax: '',
-    email: '',
-    support_rep_id: ''
-  });
+  const [customer, setCustomer] = useState('');
 
   const [customerID, setCustomerID] = useState('');
 
@@ -34,6 +21,7 @@ const Retrieve = () => {
       setCustomer(result.data);
     })
     .catch( err => {
+      setCustomer('')
       console.log(err.response);
     })
   }
@@ -41,26 +29,32 @@ const Retrieve = () => {
   return (
     <>
       <h1>Retrieve Customer</h1>
-      <form className='form-style' onSubmit={(e) => handleOnSubmit(e)}>
+      <form className='form-style container-form' id='ret-form' onSubmit={(e) => handleOnSubmit(e)}>
         <label>
           Enter Customer ID:
           <input type='text' required
           value={customerID} onChange={(e) => setCustomerID(e.target.value)}/>
         </label>
-        <input type='submit' value='Get Customer'/>
+        <input className='cursor' type='submit' value='Get Customer'/>
       </form>
-      <p>{customer.first_name}</p>
-      <p>{customer.last_name}</p>
-      <p>{customer.company}</p>
-      <p>{customer.address}</p>
-      <p>{customer.city}</p>
-      <p>{customer.state}</p>
-      <p>{customer.country}</p>
-      <p>{customer.postal_code}</p>
-      <p>{customer.phone}</p>
-      <p>{customer.fax}</p>
-      <p>{customer.email}</p>
-      <p>{customer.support_rep_id}</p>
+      <div className='container-a'>
+        <div className='container-b'>
+          <p>First Name: <strong>{customer.first_name}</strong></p>
+          <p>Last Name: <strong>{customer.last_name}</strong></p>
+          <p>Company: <strong>{customer.company}</strong></p>
+          <p>Address: <strong>{customer.address}</strong></p>
+          <p>City: <strong>{customer.city}</strong></p>
+          <p>State: <strong>{customer.state}</strong></p>
+        </div>
+        <div className='container-b'>
+          <p>Country: <strong>{customer.country}</strong></p>
+          <p>Postal Code: <strong>{customer.postal_code}</strong></p>
+          <p>Phone: <strong>{customer.phone}</strong></p>
+          <p>Fax: <strong>{customer.fax}</strong></p>
+          <p>Email: <strong>{customer.email}</strong></p>
+          <p>Support Rep ID: <strong>{customer.support_rep_id}</strong></p>
+        </div>
+      </div>
       <retrieveContext.Provider value={customer}>
         <Update />
       </retrieveContext.Provider>

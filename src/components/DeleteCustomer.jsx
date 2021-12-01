@@ -23,13 +23,13 @@ const DeleteCustomer = () => {
   return (
     <>
       <h1>Delete Customer</h1>
-      <form className='form-style' onSubmit={(e) => handleOnSubmit(e)}>
+      <form className='form-style container-form' id='ret-form' onSubmit={(e) => handleOnSubmit(e)}>
         <label>
           Enter Customer ID:
           <input type='text' required
           value={customerID} onChange={(e) => setCustomerID(e.target.value)}/>
         </label>
-        <input type='submit' value='Delete Customer'/>
+        <input className='cursor' type='submit' value='Delete Customer'/>
       </form>
     </>
   )
