@@ -7,18 +7,18 @@ const Update = () => {
 
   let context= React.useContext(retrieveContext);
   const customerID = context.id;
-  const [firstName, setFirstName] = useState(context.firstName);
-  const [lastName, setLastName] = useState(context.lastName);
-  const [company, setCompany] = useState(context.city);
-  const [address, setAddress] = useState(context.address);
-  const [city, setCity] = useState(context.city);
-  const [state, setState] = useState(context.state);
-  const [country, setCountry] = useState(context.country);
-  const [postalCode, setPostalCode] = useState(context.PostalCode);
-  const [phone, setPhone] = useState(context.phone);
-  const [fax, setFax] = useState(context.fax);
-  const [email, setEmail] = useState(context.email);
-  const [supportRepID, setSupportRepID] = useState(context.supportRepID);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [company, setCompany] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [phone, setPhone] = useState('');
+  const [fax, setFax] = useState('');
+  const [email, setEmail] = useState('');
+  const [supportRepID, setSupportRepID] = useState('');
 
   const upDate = () => {
     setFirstName(context.first_name);
@@ -56,7 +56,6 @@ const Update = () => {
       }
     })
     .then( result => {
-      console.log(result.data);
       setFirstName('');
       setLastName('');
       setCompany('');
