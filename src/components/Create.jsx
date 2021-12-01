@@ -4,53 +4,63 @@ import 'regenerator-runtime/runtime';
 
 const Create = () => {
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [company, setCompany] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [phone, setPhone] = useState('');
-  const [fax, setFax] = useState('');
-  const [email, setEmail] = useState('');
-  const [supportRepID, setSupportRepID] = useState('');
+  const [customer, setCustomer] = useState({
+    firstName: '',
+    lastName: '',
+    company: '',
+    address: '',
+    city: '',
+    state: '',
+    country: '',
+    postalCode: '',
+    phone: '',
+    fax: '',
+    email: '',
+    supportRepID: ''
+  });
+  const [requestData, setRequestData ] = useState(
+    {
+      method: '',
+      id: ''
+    }
+  );
+  // const [customerID, setCustomerID] = useState('');
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     await axios({
-      method: 'post',
-      url: `http://localhost:3000/customers`,
+      method: requestData.method,
+      url: `http://localhost:3000/customers${requestData.id}`,
       data: {
-        first_name: firstName,
-        last_name: lastName,
-        company: company,
-        address: address,
-        city: city,
-        state: state,
-        country: country,
-        postal_code: postalCode,
-        phone: phone,
-        fax: fax,
-        email: email,
-        support_rep_id: supportRepID
+        first_name: customer.firstName,
+        last_name: customer.lastName,
+        company: customer.company,
+        address: customer.address,
+        city: customer.city,
+        state: customer.state,
+        country: customer.country,
+        postal_code: customer.postalCode,
+        phone: customer.phone,
+        fax: customer.fax,
+        email: customer.email,
+        support_rep_id: customer.supportRepID
       }
     })
     .then( result => {
-      console.log(result.data);
-      setFirstName('');
-      setLastName('');
-      setCompany('');
-      setAddress('');
-      setCity('');
-      setState('');
-      setCountry('');
-      setPostalCode('');
-      setPhone('');
-      setFax('');
-      setEmail('');
-      setSupportRepID('');
+      setCustomer({
+        firstName: '',
+        lastName: '',
+        company: '',
+        address: '',
+        city: '',
+        state: '',
+        country: '',
+        postalCode: '',
+        phone: '',
+        fax: '',
+        email: '',
+        supportRepID: ''
+      });
     })
     .catch( err => {
       console.log(err.response);
@@ -66,67 +76,72 @@ const Create = () => {
           <label>
             First Name:
             <input type='text' required
-            value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+            value={customer.firstName} onChange={(e) => setCustomer({...customer, firstName: e.target.value})}/>
           </label>
           <label>
             Last Name:
             <input type='text' required
-            value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+            value={customer.lastName} onChange={(e) => setCustomer({...customer, lastName: e.target.value})}/>
           </label>
           <label>
             Company:
             <input type='text'
-            value={company} onChange={(e) => setCompany(e.target.value)}/>
+            value={customer.company} onChange={(e) => setCustomer({...customer, company: e.target.value})}/>
           </label>
           <label>
             Address:
             <input type='text'
-            value={address} onChange={(e) => setAddress(e.target.value)}/>
+            value={customer.address} onChange={(e) => setCustomer({...customer, address: e.target.value})}/>
           </label>
           <label>
             City:
             <input type='text'
-            value={city} onChange={(e) => setCity(e.target.value)}/>
+            value={customer.city} onChange={(e) => setCustomer({...customer, city: e.target.value})}/>
           </label>
           <label>
             State:
             <input type='text'
-            value={state} onChange={(e) => setState(e.target.value)}/>
+            value={customer.state} onChange={(e) => setCustomer({...customer, state: e.target.value})}/>
           </label>
           </div>
           <div className='container-c'>
           <label>
             Country:
             <input type='text'
-            value={country} onChange={(e) => setCountry(e.target.value)}/>
+            value={customer.country} onChange={(e) => setCustomer({...customer, country: e.target.value})}/>
           </label>
           <label>
             Postal Code:
             <input type='text'
-            value={postalCode} onChange={(e) => setPostalCode(e.target.value)}/>
+            value={customer.postalCode} onChange={(e) => setCustomer({...customer, postalCode: e.target.value})}/>
           </label>
           <label>
             Phone:
             <input type='text'
-            value={phone} onChange={(e) => setPhone(e.target.value)}/>
+            value={customer.phone} onChange={(e) => setCustomer({...customer, phone: e.target.value})}/>
           </label>
           <label>
             Fax:
             <input type='text'
-            value={fax} onChange={(e) => setFax(e.target.value)}/>
+            value={customer.fax} onChange={(e) => setCustomer({...customer, fax: e.target.value})}/>
           </label>
           <label>
             Email:
             <input type='email' required
-            value={email} onChange={(e) => setEmail(e.target.value)}/>
+            value={customer.email} onChange={(e) => setCustomer({...customer, email: e.target.value})}/>
           </label>
           <label>
             Support Rep ID:
             <input type='text'
-            value={supportRepID} onChange={(e) => setSupportRepID(e.target.value)}/>
+            value={customer.supportRepID} onChange={(e) => setCustomer({...customer, supportRepID: e.target.value})}/>
           </label>
           </div>
-          <input className='submit-btn cursor' type='submit' value='Add Customer'/>
+          <input className='submit-btn cursor' type='submit' value='Add Customer'
+          onClick={() => setRequestData({method: 'post', id: ''})}
+          />
+          <input className='submit-btn cursor' type='submit' value='Update Customer'
+          onClick={() => setRequestData({method: 'put', id: customerID})}
+          />
         </form>
       </div>
     </>
