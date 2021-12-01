@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import Update from './Update.jsx';
+import Create from './Create.jsx';
 
 export const retrieveContext = React.createContext();
 
@@ -56,7 +56,7 @@ const Retrieve = () => {
         </div>
       </div>
       <retrieveContext.Provider value={customer}>
-        <Update />
+        <Create />
       </retrieveContext.Provider>
     </>
   )
