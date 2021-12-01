@@ -8,15 +8,12 @@ export const retrieveContext = React.createContext();
 const Retrieve = () => {
 
   const [customer, setCustomer] = useState('');
-<<<<<<< HEAD
-  const [customerID, setCustomerID] = useState('');
-=======
 
   const [customerInfo, setCustomerInfo] = useState({
     method: '',
     id: ''
   });
->>>>>>> 25a69f0e650a303783eaf7e4ec75379e84281d32
+
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
