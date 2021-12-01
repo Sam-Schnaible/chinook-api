@@ -7,21 +7,7 @@ export const retrieveContext = React.createContext();
 
 const Retrieve = () => {
 
-  const [customer, setCustomer] = useState({
-   first_name: '',
-    last_name: '',
-    company: '',
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    postal_code: '',
-    phone: '',
-    fax: '',
-    email: '',
-    support_rep_id: ''
-  });
-
+  const [customer, setCustomer] = useState('');
   const [customerID, setCustomerID] = useState('');
 
   const handleOnSubmit = async (e) => {

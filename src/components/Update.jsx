@@ -74,7 +74,6 @@ const Update = () => {
     })
   }
 
-
   return (
     <>
       <h1>Update Customer</h1>
