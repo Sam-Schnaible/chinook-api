@@ -1,7 +1,6 @@
 import React, { Component} from "react";
 import Retrieve from './components/Retrieve.jsx';
 import Create from './components/Create.jsx';
-import DeleteCustomer from './components/DeleteCustomer.jsx';
 
 const App = () => {
 
