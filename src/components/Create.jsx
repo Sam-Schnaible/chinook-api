@@ -92,7 +92,7 @@ const Create = () => {
   return (
     <>
       <h1>Create Or Update Customer</h1>
-      <button className='cursor' onClick={()=> upDate() }>Add Retrieve Customer Info</button>
+      <button className='cursor' onClick={()=> upDate() }>Add Retrieved Customer Info</button>
       <div className='container-a form-a'>
         <form className='form-style container-form' onSubmit={(e) => handleOnSubmit(e)}>
         <div className='container-c'>
