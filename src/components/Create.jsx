@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
+import { retrieveContext} from './Retrieve.jsx';
 
 const Create = () => {
+
+  let context= React.useContext(retrieveContext);
+  const customerID = context.id;
 
   const [customer, setCustomer] = useState({
     firstName: '',
@@ -18,13 +22,43 @@ const Create = () => {
     email: '',
     supportRepID: ''
   });
+
   const [requestData, setRequestData ] = useState(
     {
       method: '',
       id: ''
     }
   );
-  // const [customerID, setCustomerID] = useState('');
+
+  const upDate = () => {
+
+    setCustomer({
+      firstName: context.first_name,
+      lastName: context.last_name,
+      company: context.company,
+      address: context.address,
+      city: context.city,
+      state: context.state,
+      country: context.country,
+      postalCode: context.postal_code,
+      phone: context.phone,
+      fax: context.fax,
+      email: context.email,
+      supportRepID: context.support_rep_id
+    })
+    setFirstName(context.first_name);
+    setLastName(context.last_name);
+    setCompany(context.company);
+    setAddress(context.address);
+    setCity(context.city);
+    setState(context.state);
+    setCountry(context.country);
+    setPostalCode(context.postal_code);
+    setPhone(context.phone);
+    setFax(context.fax);
+    setEmail(context.email);
+    setSupportRepID(context.support_rep_id);
+  }
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
