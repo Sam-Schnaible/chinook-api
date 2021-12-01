@@ -38,19 +38,21 @@ Fork and clone this repo then run:
   * **Code:** 200 <br />
     **Content:** 
     
-    `{"id": 22,
-    "first_name": "Heather",
-    "last_name": "Leacock",
-    "company": null,
-    "address": "120 S Orange Ave",
-    "city": "Orlando",
-    "state": "FL",
-    "country": "USA",
-    "postal_code": "32801",
-    "phone": "+1 (407) 999-7788",
-    "fax": null,
-    "email": "hleacock@gmail.com",
-    "support_rep_id": 4}`
+ `{
+    "id": 22, `<br />`
+    "first_name": "Heather", `<br />`
+    "last_name": "Leacock", `<br />`
+    "company": null, `<br />`
+    "address": "120 S Orange Ave", `<br />`
+    "city": "Orlando", `<br />`
+    "state": "FL", `<br />`
+    "country": "USA", `<br />`
+    "postal_code": "32801", `<br />`
+    "phone": "+1 (407) 999-7788", `<br />`
+    "fax": null, `<br />`
+    "email": "hleacock@gmail.com", `<br />`
+    "support_rep_id": 4
+   }` 
  
 * **Error Response:**
 
@@ -78,20 +80,20 @@ Fork and clone this repo then run:
 * **Data Params**
 
   `
-  {
-    "first_name": string required,
-    "last_name": string required,
-    "company": string || null,
-    "address": string || null,
-    "city": string || null,
-    "state": string || null,
-    "country": string || null,
-    "postal_code": string || null,
-    "phone": string || null,
-    "fax": string || null,
-    "email": string required,
-    "support_rep_id": int || null
-}
+  { `<br />`
+    "first_name": string required, `<br />`
+    "last_name": string required, `<br />`
+    "company": string || null, `<br />`
+    "address": string || null, `<br />`
+    "city": string || null, `<br />`
+    "state": string || null, `<br />`
+    "country": string || null, `<br />`
+    "postal_code": string || null, `<br />`
+    "phone": string || null, `<br />`
+    "fax": string || null, `<br />`
+    "email": string required, `<br />`
+    "support_rep_id": int || null `<br />`
+   }
   `
 
 * **Success Response:**
@@ -118,22 +120,22 @@ Fork and clone this repo then run:
 
 * **Data Params**
 
-  `
-  {
-    "first_name": string required,
-    "last_name": string required,
-    "company": string || null,
-    "address": string || null,
-    "city": string || null,
-    "state": string || null,
-    "country": string || null,
-    "postal_code": string || null,
-    "phone": string || null,
-    "fax": string || null,
-    "email": string required,
-    "support_rep_id": int || null
-}
-  `
+  
+  `{ `<br />`
+    "first_name": string required, `<br />`
+    "last_name": string required, `<br />`
+    "company": string || null, `<br />`
+    "address": string || null, `<br />`
+    "city": string || null, `<br />`
+    "state": string || null, `<br />`
+    "country": string || null, `<br />`
+    "postal_code": string || null, `<br />`
+    "phone": string || null, `<br />`
+    "fax": string || null, `<br />`
+    "email": string required, `<br />`
+    "support_rep_id": int || null `<br />`
+   }`
+  
 
 * **Success Response:**
 
