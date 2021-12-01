@@ -38,7 +38,7 @@ Fork and clone this repo then run:
   * **Code:** 200 <br />
     **Content:** 
     
- `{
+ `{ `<br />`
     "id": 22, `<br />`
     "first_name": "Heather", `<br />`
     "last_name": "Leacock", `<br />`
@@ -51,7 +51,7 @@ Fork and clone this repo then run:
     "phone": "+1 (407) 999-7788", `<br />`
     "fax": null, `<br />`
     "email": "hleacock@gmail.com", `<br />`
-    "support_rep_id": 4
+    "support_rep_id": 4 `<br />`
    }` 
  
 * **Error Response:**
