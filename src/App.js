@@ -11,7 +11,6 @@ const App = () => {
       <p id='title'> Customer Dashboard </p>
       <h3>Note: To update a customer, first retrieve the customer then click 'Add Current Customer'.</h3>
       <Retrieve />
-      <Create />
       <DeleteCustomer />
     </div>
   );
