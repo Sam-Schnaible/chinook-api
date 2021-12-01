@@ -35,36 +35,24 @@ const Create = () => {
     setCustomer({
       firstName: context.first_name,
       lastName: context.last_name,
-      company: context.company,
-      address: context.address,
-      city: context.city,
-      state: context.state,
-      country: context.country,
-      postalCode: context.postal_code,
-      phone: context.phone,
-      fax: context.fax,
-      email: context.email,
-      supportRepID: context.support_rep_id
-    })
-    setFirstName(context.first_name);
-    setLastName(context.last_name);
-    setCompany(context.company);
-    setAddress(context.address);
-    setCity(context.city);
-    setState(context.state);
-    setCountry(context.country);
-    setPostalCode(context.postal_code);
-    setPhone(context.phone);
-    setFax(context.fax);
-    setEmail(context.email);
-    setSupportRepID(context.support_rep_id);
+      company: context.company || '',
+      address: context.address || '',
+      city: context.city || '',
+      state: context.state || '',
+      country: context.country || '',
+      postalCode: context.postal_code || '',
+      phone: context.phone || '',
+      fax: context.fax || '',
+      email: context.email || '',
+      supportRepID: context.support_rep_id || ''
+    });
   }
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     await axios({
       method: requestData.method,
-      url: `http://localhost:3000/customers${requestData.id}`,
+      url: `http://localhost:3000/customers/${requestData.id}`,
       data: {
         first_name: customer.firstName,
         last_name: customer.lastName,
@@ -104,6 +92,7 @@ const Create = () => {
   return (
     <>
       <h1>Create Customer</h1>
+      <button className='cursor' onClick={()=> upDate() }>Add Current Information</button>
       <div className='container-a form-a'>
         <form className='form-style container-form' onSubmit={(e) => handleOnSubmit(e)}>
         <div className='container-c'>
