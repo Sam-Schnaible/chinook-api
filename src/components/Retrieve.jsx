@@ -7,20 +7,7 @@ export const retrieveContext = React.createContext();
 
 const Retrieve = () => {
 
-  const [customer, setCustomer] = useState({
-   first_name: '',
-    last_name: '',
-    company: '',
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    postal_code: '',
-    phone: '',
-    fax: '',
-    email: '',
-    support_rep_id: ''
-  });
+  const [customer, setCustomer] = useState('');
 
   const [customerID, setCustomerID] = useState('');
 
@@ -34,6 +21,7 @@ const Retrieve = () => {
       setCustomer(result.data);
     })
     .catch( err => {
+      setCustomer('')
       console.log(err.response);
     })
   }
@@ -49,18 +37,18 @@ const Retrieve = () => {
         </label>
         <input type='submit' value='Get Customer'/>
       </form>
-      <p>{customer.first_name}</p>
-      <p>{customer.last_name}</p>
-      <p>{customer.company}</p>
-      <p>{customer.address}</p>
-      <p>{customer.city}</p>
-      <p>{customer.state}</p>
-      <p>{customer.country}</p>
-      <p>{customer.postal_code}</p>
-      <p>{customer.phone}</p>
-      <p>{customer.fax}</p>
-      <p>{customer.email}</p>
-      <p>{customer.support_rep_id}</p>
+      <p>First Name: {customer.first_name}</p>
+      <p>Last Name: {customer.last_name}</p>
+      <p>Company: {customer.company}</p>
+      <p> Address: {customer.address}</p>
+      <p>City: {customer.city}</p>
+      <p>State: {customer.state}</p>
+      <p>Country: {customer.country}</p>
+      <p>Postal Code: {customer.postal_code}</p>
+      <p>Phone: {customer.phone}</p>
+      <p>Fax: {customer.fax}</p>
+      <p>Email: {customer.email}</p>
+      <p>Support Rep ID: {customer.support_rep_id}</p>
       <retrieveContext.Provider value={customer}>
         <Update />
       </retrieveContext.Provider>
