@@ -3,4 +3,9 @@ config.js
 notes.md
 public
 chinook.pem
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_Store
+.env
+>>>>>>> 25a69f0e650a303783eaf7e4ec75379e84281d32
