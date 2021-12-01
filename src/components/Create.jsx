@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
+import { retrieveContext} from './Retrieve.jsx';
 
 const Create = () => {
+
+  let context= React.useContext(retrieveContext);
+  const customerID = context.id;
 
   const [customer, setCustomer] = useState({
     firstName: '',
@@ -18,19 +22,37 @@ const Create = () => {
     email: '',
     supportRepID: ''
   });
+
   const [requestData, setRequestData ] = useState(
     {
       method: '',
       id: ''
     }
   );
-  // const [customerID, setCustomerID] = useState('');
+
+  const upDate = () => {
+
+    setCustomer({
+      firstName: context.first_name,
+      lastName: context.last_name,
+      company: context.company || '',
+      address: context.address || '',
+      city: context.city || '',
+      state: context.state || '',
+      country: context.country || '',
+      postalCode: context.postal_code || '',
+      phone: context.phone || '',
+      fax: context.fax || '',
+      email: context.email || '',
+      supportRepID: context.support_rep_id || ''
+    });
+  }
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     await axios({
       method: requestData.method,
-      url: `http://localhost:3000/customers${requestData.id}`,
+      url: `http://localhost:3000/customers/${requestData.id}`,
       data: {
         first_name: customer.firstName,
         last_name: customer.lastName,
@@ -69,7 +91,8 @@ const Create = () => {
 
   return (
     <>
-      <h1>Create Customer</h1>
+      <h1>Create Or Update Customer</h1>
+      <button className='cursor' onClick={()=> upDate() }>Add Retrieved Customer Info</button>
       <div className='container-a form-a'>
         <form className='form-style container-form' onSubmit={(e) => handleOnSubmit(e)}>
         <div className='container-c'>

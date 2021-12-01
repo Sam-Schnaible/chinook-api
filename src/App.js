@@ -9,10 +9,8 @@ const App = () => {
     <div className="App">
 
       <p id='title'> Customer Dashboard </p>
-      <h3>Note: To update a customer, first retrieve the customer then click 'Add Current Customer'.</h3>
+      <h3>Note: To update a customer, first retrieve the customer then click 'Add Retrieved Customer Info'.</h3>
       <Retrieve />
-      <Create />
-      <DeleteCustomer />
     </div>
   );
 }

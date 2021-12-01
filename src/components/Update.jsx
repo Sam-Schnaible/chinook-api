@@ -7,6 +7,7 @@ const Update = () => {
 
   let context= React.useContext(retrieveContext);
   const customerID = context.id;
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [company, setCompany] = useState('');
@@ -153,3 +154,12 @@ const Update = () => {
 }
 
 export default Update;
+
+
+const handleChange = e => {
+  const { name, value } = e.target;
+  setCustomer( prevState => ({
+  ...prevState,
+      [name] : value
+}))
+}
