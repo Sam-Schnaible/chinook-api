@@ -9,13 +9,16 @@ const Retrieve = () => {
 
   const [customer, setCustomer] = useState('');
 
-  const [customerID, setCustomerID] = useState('');
+  const [customerInfo, setCustomerInfo] = useState({
+    method: '',
+    id: ''
+  });
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     await axios({
-      method: 'get',
-      url: `http://localhost:3000/customers/${customerID}`
+      method: customerInfo.method,
+      url: `http://localhost:3000/customers/${customerInfo.id}`
     })
     .then( result => {
       setCustomer(result.data);
@@ -33,9 +36,14 @@ const Retrieve = () => {
         <label>
           Enter Customer ID:
           <input type='text' required
-          value={customerID} onChange={(e) => setCustomerID(e.target.value)}/>
+          value={customerInfo.id} onChange={(e) => setCustomerInfo({...customerInfo, id: e.target.value})}/>
         </label>
-        <input className='cursor' type='submit' value='Get Customer'/>
+        <input className='cursor' type='submit' value='Get Customer'
+        onClick={() => setCustomerInfo({...customerInfo, method: 'get'})}
+        />
+        <input className='cursor' type='submit' value='Delete Customer'
+        onClick={() => setCustomerInfo({...customerInfo, method: 'delete'})}
+        />
       </form>
       <div className='container-a'>
         <div className='container-b'>
