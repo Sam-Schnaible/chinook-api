@@ -23,7 +23,7 @@ Fork and clone this repo then run:
 
 * **URL**
 
-  /customers/:id
+  /customers/:id (range of id's is 1-59)
 
 * **Method:**
   
