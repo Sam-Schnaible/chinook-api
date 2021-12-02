@@ -182,7 +182,10 @@ Fork and clone this repo then run:
  - require user profiles to access database with different authorizations
    - salesperson authorization to create, retrieve, and update customers
    - manager authorization to create, retrieve, update, and delete customers
+   - 
  - add Authentication for a layer of security
+
+ - allow any field to to be searchable and return a customer profile
 
  - include an initial GET request upon loading which display the range of customer ids for retrieving, updating, and deleting
 
