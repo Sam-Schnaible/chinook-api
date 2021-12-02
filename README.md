@@ -9,7 +9,9 @@ Fork and clone this repo then run:
 
 `npm run database` to run the postgresql schema (make sure user is set to postgres and database is postgres)
 
-`npm run start` to run the application
+`npm run start` to run the application locally
+
+`npm run build` to run application for deployement
 
 `npm run server-dev` to start server
 
