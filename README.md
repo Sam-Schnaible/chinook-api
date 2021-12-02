@@ -189,7 +189,7 @@ Fork and clone this repo then run:
 
  - include an initial GET request upon loading which display the range of customer ids for retrieving, updating, and deleting
 
- - validate data for required fields in customer profile form on backend
+ - validate data for required fields in customer profile form before running any query in models
 
  - Add mock data with at least 100,000 profiles and run stress tests to locate any bottlenecks
 
