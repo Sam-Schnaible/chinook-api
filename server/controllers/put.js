@@ -1,4 +1,5 @@
 const { put } = require('../models');
+const { logger } = require('../../logger.js');
 
 module.exports = {
   updateCustomer: async (req, res) => {
@@ -6,7 +7,7 @@ module.exports = {
       let data = await put.updateCustomer(req.params.id, req.body);
       res.status(200).send(data);
     } catch(err) {
-      console.log(err);
+      logger(err);
       res.status(400).send(err.message);
     }
   },
