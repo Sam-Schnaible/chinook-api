@@ -6,4 +6,9 @@ module.exports = {
     return result;
   },
 
+  getInitial: async () => {
+    const result = await db.many(`SELECT MIN(id), MAX(id) FROM CUSTOMERS`);
+    return result;
+  }
+
 }
