@@ -65,7 +65,7 @@ const Create = () => {
         phone: customer.phone,
         fax: customer.fax,
         email: customer.email,
-        support_rep_id: customer.supportRepID
+        support_rep_id: customer.supportRepID || 2
       }
     })
     .then( result => {
@@ -158,6 +158,7 @@ const Create = () => {
             <input type='text'
             value={customer.supportRepID} onChange={(e) => setCustomer({...customer, supportRepID: e.target.value})}/>
           </label>
+          <p>*Support Rep ID Range: 1 - 8</p>
           </div>
           <input className='submit-btn cursor' type='submit' value='Add Customer'
           onClick={() => setRequestData({method: 'post', id: ''})}
