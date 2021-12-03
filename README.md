@@ -182,14 +182,14 @@ Fork and clone this repo then run:
  - require user profiles to access database with different authorizations
    - salesperson authorization to create, retrieve, and update customers
    - manager authorization to create, retrieve, update, and delete customers
-   - 
+   
  - add Authentication for a layer of security
 
- - allow any field to to be searchable and return a customer profile
+ - allow any field to be searchable and return a customer profile
 
  - include an initial GET request upon loading which display the range of customer ids for retrieving, updating, and deleting
 
- - validate data for required fields in customer profile form before running any query in models
+ - validate data for required fields of customer profile in models before running any query
 
  - Add mock data with at least 100,000 profiles and run stress tests to locate any bottlenecks
 
