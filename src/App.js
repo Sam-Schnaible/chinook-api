@@ -26,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     range.getRange();
-  }, [range.rangeMin])
+  }, [])
   return(
     <div className="App">
 
