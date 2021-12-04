@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
 import { retrieveContext} from './Retrieve.jsx';
+import { initialRange } from '../App.js';
 
 const Create = () => {
 
-  let context= React.useContext(retrieveContext);
+  const context= React.useContext(retrieveContext);
+  const rangeContext = React.useContext(initialRange)
   const customerID = context.id;
+  const getRange = rangeContext.getRange;
 
   const [customer, setCustomer] = useState({
     firstName: '',
@@ -83,6 +86,7 @@ const Create = () => {
         email: '',
         supportRepID: ''
       });
+      getRange();
     })
     .catch( err => {
       console.log(err.response);
