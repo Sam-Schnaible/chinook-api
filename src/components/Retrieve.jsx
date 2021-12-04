@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
 import Create from './Create.jsx';
+import { initialRange } from '../App.js';
 
 export const retrieveContext = React.createContext();
 
 const Retrieve = () => {
 
-  const [customer, setCustomer] = useState('');
+  let context = React.useContext(initialRange);
+  const getRange = context.getRange;
+  const rangeMin = context.rangeMin;
+  const rangeMax = context.rangeMax;
 
+  const [customer, setCustomer] = useState('');
   const [customerInfo, setCustomerInfo] = useState({
     method: '',
     id: '',
     idRangeMin: '',
     idRangeMax: ''
   });
-
-  const getInitialRange = async () => {
-    await axios({
-      method: 'get',
-      url: 'http://localhost:3000/customers'
-    })
-    .then( result => {
-      setCustomerInfo({...customerInfo, idRangeMin: result.data[0].min, idRangeMax: result.data[0].max});
-    })
-    .catch( err => {
-      console.log(err);
-    })
-  }
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -37,16 +29,13 @@ const Retrieve = () => {
     })
     .then( result => {
       setCustomer(result.data);
+      getRange();
     })
     .catch(  err => {
       alert(`Customer ID: ${customerInfo.id} does not exist!`);
       setCustomerInfo({...customerInfo, id: ''})
     })
   }
-
-  useEffect( () => {
-    getInitialRange();
-  }, [])
 
   return (
     <>
@@ -63,7 +52,7 @@ const Retrieve = () => {
         <input className='cursor' type='submit' value='Delete Customer'
         onClick={() => setCustomerInfo({...customerInfo, method: 'delete'})}
         />
-        <p>ID Range: {customerInfo.idRangeMin} - {customerInfo.idRangeMax}</p>
+        <p>ID Range: {rangeMin} - {rangeMax}</p>
       </form>
       <div className='container-a'>
         <div className='container-b'>
