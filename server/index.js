@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const router = require('./routes.js');
 const path = require('path');
 const cors = require('cors');
-const port = 3001;
+const port = 3000;
 
 const inProduction = process.env.Node_ENV === "development";
 

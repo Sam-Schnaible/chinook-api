@@ -23,16 +23,6 @@ const Retrieve = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    if ( customerInfo.method === 'delete') {
-      await axios({
-        method: 'get',
-        url: `http://localhost:3000/customers/${customerInfo.id}`
-      })
-      .catch( err => {
-        alert(`Customer ID: ${customerInfo.id} does not exist!`);
-        setCustomerInfo({...customerInfo, id: ''})
-      })
-    }
     await axios({
       method: customerInfo.method,
       url: `http://localhost:3000/customers/${customerInfo.id}`
@@ -49,7 +39,6 @@ const Retrieve = () => {
 
   return (
     <>
-      <h1>Retrieve Customer</h1>
       {/* <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
