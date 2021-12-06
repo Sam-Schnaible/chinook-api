@@ -72,6 +72,8 @@ const Create = () => {
       }
     })
     .then( result => {
+      let action = requestData.method === 'post' ? 'Customer has been successfully added!'
+      : 'Customer has been successfully updated!';
       setCustomer({
         firstName: '',
         lastName: '',
@@ -86,6 +88,7 @@ const Create = () => {
         email: '',
         supportRepID: ''
       });
+      alert(action);
       getRange();
     })
     .catch( err => {
