@@ -22,17 +22,22 @@ const Retrieve = () => {
   });
 
   const handleOnSubmit = async (e) => {
+    let hasID;
     e.preventDefault();
     if ( customerInfo.method === 'delete') {
       await axios({
         method: 'get',
         url: `http://localhost:3000/customers/${customerInfo.id}`
       })
+      .then( result => {
+        hasID = result.data.id
+      })
       .catch( err => {
         alert(`Customer ID: ${customerInfo.id} does not exist!`);
         setCustomerInfo({...customerInfo, id: ''})
       })
     }
+
     await axios({
       method: customerInfo.method,
       url: `http://localhost:3000/customers/${customerInfo.id}`
@@ -40,6 +45,10 @@ const Retrieve = () => {
     .then( result => {
       setCustomer(result.data);
       getRange();
+      if ( hasID ) {
+        alert(`Customer with ID of ${customerInfo.id} successfully deleted!`)
+      }
+      setCustomerInfo({...customerInfo, id: ''})
     })
     .catch(  err => {
       alert(`Customer ID: ${customerInfo.id} does not exist!`);
