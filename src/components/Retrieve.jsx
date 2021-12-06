@@ -23,6 +23,16 @@ const Retrieve = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    if ( customerInfo.method === 'delete') {
+      await axios({
+        method: 'get',
+        url: `http://localhost:3000/customers/${customerInfo.id}`
+      })
+      .catch( err => {
+        alert(`Customer ID: ${customerInfo.id} does not exist!`);
+        setCustomerInfo({...customerInfo, id: ''})
+      })
+    }
     await axios({
       method: customerInfo.method,
       url: `http://localhost:3000/customers/${customerInfo.id}`
