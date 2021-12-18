@@ -12,4 +12,14 @@ module.exports = {
     }
   },
 
+  getInitial: async (req, res) => {
+    try{
+      let data = await get.getInitial();
+      res.status(200).send(data)
+    } catch(err) {
+      logger(err);
+      res.status(400).send(err.message);
+    }
+  },
+
 }
