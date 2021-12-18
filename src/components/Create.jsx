@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
 import { retrieveContext} from './Retrieve.jsx';
+import { initialRange } from '../App.js';
 
 const Create = () => {
 
-  let context= React.useContext(retrieveContext);
+  const context= React.useContext(retrieveContext);
+  const rangeContext = React.useContext(initialRange)
   const customerID = context.id;
+  const getRange = rangeContext.getRange;
 
   const [customer, setCustomer] = useState({
     firstName: '',
@@ -65,10 +68,12 @@ const Create = () => {
         phone: customer.phone,
         fax: customer.fax,
         email: customer.email,
-        support_rep_id: customer.supportRepID
+        support_rep_id: customer.supportRepID || 2
       }
     })
     .then( result => {
+      let action = requestData.method === 'post' ? 'Customer has been successfully added!'
+      : 'Customer has been successfully updated!';
       setCustomer({
         firstName: '',
         lastName: '',
@@ -83,6 +88,8 @@ const Create = () => {
         email: '',
         supportRepID: ''
       });
+      alert(action);
+      getRange();
     })
     .catch( err => {
       console.log(err.response);
@@ -158,6 +165,7 @@ const Create = () => {
             <input type='text'
             value={customer.supportRepID} onChange={(e) => setCustomer({...customer, supportRepID: e.target.value})}/>
           </label>
+          <p>*Support Rep ID Range: 1 - 8</p>
           </div>
           <input className='submit-btn cursor' type='submit' value='Add Customer'
           onClick={() => setRequestData({method: 'post', id: ''})}

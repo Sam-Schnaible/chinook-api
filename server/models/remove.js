@@ -13,4 +13,3 @@ module.exports = {
     `, [id]);
     return 'Customer successfully deleted!'
   }
-}

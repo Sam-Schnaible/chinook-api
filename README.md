@@ -1,5 +1,5 @@
 # chinook-api
-A simple CRUD api that let's you create, retrieve, update, and delete customers. 
+An app that lets employees and managers create, retrieve, update, and delete customer profiles. 
 
 ## Setup & Installation
 
@@ -9,7 +9,9 @@ Fork and clone this repo then run:
 
 `npm run database` to run the postgresql schema (make sure user is set to postgres and database is postgres)
 
-`npm run start` to run the application
+`npm run start` to run the application locally
+
+`npm run build` to run application for deployement
 
 `npm run server-dev` to start server
 
@@ -21,7 +23,7 @@ Fork and clone this repo then run:
 
 * **URL**
 
-  /customers/:id
+  /customers/:id (range of id's is 1-59)
 
 * **Method:**
   
@@ -174,4 +176,22 @@ Fork and clone this repo then run:
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ error : "null value in column "first_name"/"last_name"/"email" of relation "customers" violates not-null constraint" }`
+    
+ ## If deployed in production
+ 
+ - require user profiles to access database with different authorizations
+   - salesperson authorization to create, retrieve, and update customers
+   - manager authorization to create, retrieve, update, and delete customers
+   
+ - add Authentication for a layer of security
+
+ - allow any field to be searchable and return a customer profile
+
+ - include an initial GET request upon loading which display the range of customer ids for retrieving, updating, and deleting
+
+ - validate data for required fields of customer profile in models before running any query
+
+ - Add mock data with at least 100,000 profiles and run stress tests to locate any bottlenecks
+
+ - refactor CSS to make the app more visually appealing and display better on mobile devices
 

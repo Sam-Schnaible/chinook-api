@@ -1,32 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
 import Create from './Create.jsx';
+import { initialRange } from '../App.js';
 
 export const retrieveContext = React.createContext();
 
 const Retrieve = () => {
 
-  const [customer, setCustomer] = useState('');
+  let context = React.useContext(initialRange);
+  const getRange = context.getRange;
+  const rangeMin = context.rangeMin;
+  const rangeMax = context.rangeMax;
 
+  const [customer, setCustomer] = useState('');
   const [customerInfo, setCustomerInfo] = useState({
     method: '',
-    id: ''
+    id: '',
+    idRangeMin: '',
+    idRangeMax: ''
   });
 
 
   const handleOnSubmit = async (e) => {
+    let hasID;
     e.preventDefault();
+    if ( customerInfo.method === 'delete') {
+      await axios({
+        method: 'get',
+        url: `http://localhost:3000/customers/${customerInfo.id}`
+      })
+      .then( result => {
+        hasID = result.data.id
+      })
+      .catch( err => {
+        alert(`Customer ID: ${customerInfo.id} does not exist!`);
+        setCustomerInfo({...customerInfo, id: ''})
+      })
+    }
+
     await axios({
       method: customerInfo.method,
       url: `http://localhost:3000/customers/${customerInfo.id}`
     })
     .then( result => {
       setCustomer(result.data);
+      getRange();
+      if ( hasID ) {
+        alert(`Customer with ID of ${customerInfo.id} successfully deleted!`)
+      }
+      setCustomerInfo({...customerInfo, id: ''})
     })
-    .catch( err => {
-      setCustomer('')
-      console.log(err.response);
+    .catch(  err => {
+      alert(`Customer ID: ${customerInfo.id} does not exist!`);
+      setCustomerInfo({...customerInfo, id: ''})
     })
   }
 
@@ -45,6 +72,7 @@ const Retrieve = () => {
         <input className='cursor' type='submit' value='Delete Customer'
         onClick={() => setCustomerInfo({...customerInfo, method: 'delete'})}
         />
+        <p>ID Range: {rangeMin} - {rangeMax}</p>
       </form>
       <div className='container-a'>
         <div className='container-b'>
