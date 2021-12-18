@@ -6,10 +6,7 @@
   "scripts": {
     "start": "webpack serve --config ./webpack.config.js --mode development",
     "build": "webpack --mode production",
-<<<<<<< HEAD
-=======
     "server": "node server",
->>>>>>> ea4482613043adf6f736cd16f383317b640ed017
     "server-dev": "nodemon server",
     "dev-database": "sudo -u postgres psql < database/schema.sql"
   },
