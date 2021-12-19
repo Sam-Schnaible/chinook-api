@@ -3,7 +3,7 @@ const { check, body, validationResult } = require('express-validator');
 const getDeleteCustomerValidationRules = () => {
   return [
     check('id').matches('[0-9]').withMessage('ID must be an integer').trim().escape()
-  ]
+  ];
 }
 
 const addUpdateCustomerValidationRules = () => {
@@ -20,16 +20,16 @@ const addUpdateCustomerValidationRules = () => {
     check('fax').matches('[0-9]').not().matches('[a-zA-Z]').optional({checkFalsy: true}).trim().escape(),
     check('email').isEmail().trim().escape().normalizeEmail(),
     check('support_rep_id').matches('[0-9]').trim().escape()
-  ]
+  ];
 }
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const extractedErrors = []
-    errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }))
+    const extractedErrors = [];
+    errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
 
-    return res.status(422).json({errors: extractedErrors})
+    return res.status(422).json({errors: extractedErrors});
   } else {
     next();
   }
