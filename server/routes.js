@@ -1,4 +1,4 @@
-const controller = require('./controllers');
+const customerController = require('./controllers/customer');
 const router = require('express').Router();
 const {
   validate,
@@ -6,10 +6,10 @@ const {
   addUpdateCustomerValidationRules }
   = require('./validateSanitize.js');
 
-router.get('/customers/:id', getDeleteCustomerValidationRules(), validate, controller.get.getOne);
-router.get('/customers', controller.get.getInitial);
-router.post('/customers', addUpdateCustomerValidationRules(), validate, controller.post.addCustomer);
-router.put('/customers/:id', addUpdateCustomerValidationRules(), validate, controller.put.updateCustomer);
-router.delete('/customers/:id', getDeleteCustomerValidationRules(), validate, controller.remove.removeCustomer);
+router.get('/customers/:id', getDeleteCustomerValidationRules(), validate, customerController.getOne);
+router.get('/customers', customerController.getInitial);
+router.post('/customers', addUpdateCustomerValidationRules(), validate, customerController.addCustomer);
+router.put('/customers/:id', addUpdateCustomerValidationRules(), validate, customerController.updateCustomer);
+router.delete('/customers/:id', getDeleteCustomerValidationRules(), validate, customerController.removeCustomer);
 
 module.exports = router;
